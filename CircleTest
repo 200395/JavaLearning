@@ -1,0 +1,68 @@
+import java.util.*;
+public class CircleTest 
+{
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Circle or Cylinder");
+        String choice = sc.next();
+        
+        if(choice.equals("circle")||(choice.equals("Circle")))
+        {
+            System.out.print("What is the radius of a circle?");
+            int radius = sc.nextInt();
+            Circle a = new Circle(radius);
+            System.out.println("Area of a cirlce: " + a.getArea());
+        }
+        else if(choice.equals("cylinder")||(choice.equals("Cylinder")))
+        {
+            System.out.println("What is the radius of the cylinder?");
+            int radius2 = sc.nextInt();
+            System.out.println("What is the height of the cylinder?");
+            double height = sc.nextDouble();
+            Cylinder b = new Cylinder(radius2, height);
+            System.out.println("Volume of the cylinder: " + b.getVolume());
+        }
+    }
+}
+
+public class Circle
+{
+    protected double pi = 3.14;
+    protected double radius; 
+    protected double area; 
+    public Circle(int r) 
+    {
+        radius = r;
+    }
+    public double getRadius()
+    {
+        return radius;
+    }
+    public double getArea() 
+    {
+        return area = pi * radius * radius;
+    }
+}
+
+public class Cylinder extends Circle
+{
+    private int base;
+    private double height; 
+    private double volume; 
+    //protected --- member can be accessed by any class in the same package
+    public Cylinder(int r, double theHeight)
+    {
+        super(r);
+        height = theHeight;
+    }
+    public double getHeight()
+    {
+        return height; 
+    }
+    public double getVolume()
+    {
+        return volume =  pi * radius * radius * height;
+    }
+}
